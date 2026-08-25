@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">EasyHome</string>
+    <string name="qs_button_label">EasyHome Settings</string>
+    <string name="home_button1_default_label">Button1</string>
+    <string name="home_button2_default_label">Button2</string>
+    <string name="launcher_item_app_name_default_text">AppName</string>
+    <string name="launcher_item_app_version_default_text">1</string>
+    <string name="empty_text"> </string>
+    <string name="settings_home_settings_label">Home Settings</string>
+    <string name="settings_launcher_label">Launcher</string>
+    <string name="settings_check_update_label">Check Update</string>
+    <string name="settings_home_button1_text_label">Button1Text</string>
+    <string name="settings_home_button1_tel_number_label">Button1TelNumber</string>
+    <string name="settings_home_button1_color_label">Button1Color</string>
+    <string name="settings_home_button1_text_color_label">Button1TextColor</string>
+    <string name="settings_home_button2_text_label">Button2Text</string>
+    <string name="settings_home_button2_tel_number_label">Button2TelNumber</string>
+    <string name="settings_home_button2_color_label">Button2Color</string>
+    <string name="settings_home_button2_text_color_label">Button2TextColor</string>
+    <string name="error_save_config">Failed to save config file</string>
+    <string name="error_save_default_config">Failed to save default config file</string>
+    <string name="error_read_config">Failed to read config file</string>
+</resources>

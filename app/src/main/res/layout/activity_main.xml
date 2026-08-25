@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:textAlignment="center"
+    android:textDirection="ltr"
+    android:background="@color/background"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_anchor="@+id/constraintLayout"
+        app:layout_anchorGravity="center">
+
+        <Button
+            android:id="@+id/callButton1"
+            android:layout_width="400dp"
+            android:layout_height="225dp"
+            android:layout_marginTop="32dp"
+            android:text="@string/home_button1_default_label"
+            android:textSize="50sp"
+            app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_call"
+            app:iconGravity="textTop"
+            app:iconSize="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.495"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/callButton2"
+            android:layout_width="400dp"
+            android:layout_height="225dp"
+            android:layout_marginTop="48dp"
+            android:text="@string/home_button2_default_label"
+            android:textSize="50sp"
+            app:cornerRadius="15dp"
+            app:icon="@android:drawable/ic_menu_call"
+            app:iconGravity="textTop"
+            app:iconSize="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/callButton1" />
+
+        <TextClock
+            android:id="@+id/textClock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:format12Hour="hh:mm"
+            android:format24Hour="HH:mm"
+            android:textAlignment="center"
+            android:textDirection="ltr"
+            android:textSize="120sp"
+            android:textColor="@color/foreground_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/callButton2" />
+
+        <TextClock
+            android:id="@+id/textClock2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:format12Hour="MM 月 dd 日 (EEE)"
+            android:format24Hour="MM 月 dd 日 (EEE)"
+            android:textAlignment="center"
+            android:textDirection="ltr"
+            android:textSize="60sp"
+            android:textColor="@color/foreground_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textClock" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

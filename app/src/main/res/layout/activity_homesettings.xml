@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageButton
+        android:id="@+id/prev_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="@android:color/transparent"
+        android:src="@drawable/back_24px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:gravity="center_vertical"
+        android:text="@string/settings_home_button1_text_label"
+        android:textAlignment="gravity"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/button1Text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/button1Text"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_vertical"
+        android:text="@string/settings_home_button1_tel_number_label"
+        android:textAlignment="gravity"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/button1TelNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1Text" />
+
+    <EditText
+        android:id="@+id/button1TelNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1Text" />
+
+    <net.nfmcpwr.EasyHome.ColorPicker
+        android:id="@+id/button1Color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/settings_home_button1_color_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1TelNumber" />
+
+    <net.nfmcpwr.EasyHome.ColorPicker
+        android:id="@+id/button1TextColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/settings_home_button1_text_color_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1Color" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_vertical"
+        android:text="@string/settings_home_button2_text_label"
+        android:textAlignment="gravity"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/button2Text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1TextColor" />
+
+    <EditText
+        android:id="@+id/button2Text"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button1TextColor" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:gravity="center_vertical"
+        android:text="@string/settings_home_button2_tel_number_label"
+        android:textAlignment="gravity"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toStartOf="@+id/button2TelNumber"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2Text" />
+
+    <EditText
+        android:id="@+id/button2TelNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:ems="10"
+        android:inputType="phone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2Text" />
+
+    <net.nfmcpwr.EasyHome.ColorPicker
+        android:id="@+id/button2Color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/settings_home_button2_color_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2TelNumber" />
+
+    <net.nfmcpwr.EasyHome.ColorPicker
+        android:id="@+id/button2TextColor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/settings_home_button2_text_color_label"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button2Color" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/home_settings_button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:text="@string/settings_home_settings_label"
+        android:textAlignment="viewStart"
+        android:textColor="@color/foreground_text"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/settings_24px"
+        app:iconTint="@color/foreground_ui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/launcher_button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:text="@string/settings_launcher_label"
+        android:textAlignment="viewStart"
+        android:textColor="@color/foreground_text"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/launcher_24px"
+        app:iconTint="@color/foreground_ui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/home_settings_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/check_update_button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:text="@string/settings_check_update_label"
+        android:textAlignment="viewStart"
+        android:textColor="@color/foreground_text"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/update_24px"
+        app:iconTint="@color/foreground_ui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/launcher_button" />
+
+    <net.nfmcpwr.EasyHome.ColorPicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/check_update_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

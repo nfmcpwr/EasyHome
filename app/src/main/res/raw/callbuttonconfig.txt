@@ -1,0 +1,1 @@
+{"Summary":"ホーム画面のボタン外観/動作設定","Button1Text":"button1","Button1BackgroundColor":"#AC99EA","Button1TextColor":"#000000","Button1TelNumber":"","Button1ImageUri":"","Button2Text":"button2","Button2BackgroundColor":"#AC99EA","Button2TextColor":"#000000","Button2TelNumber":"","Button2ImageUri":""}
