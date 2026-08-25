@@ -19,15 +19,17 @@ import androidx.activity.ComponentActivity;
 import androidx.annotation.Nullable;
 import androidx.core.content.FileProvider;
 
-import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URL;
+import java.io.InputStream;
 import java.util.Locale;
 
 import io.github.z4kn4fein.semver.StringExtensionsKt;
 import io.github.z4kn4fein.semver.VersionFormatException;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class CheckUpdateActivity extends ComponentActivity
 {
@@ -103,7 +105,7 @@ public class CheckUpdateActivity extends ComponentActivity
         return UpdateApp(response);
     }
     
-    private boolean UpdateApp(GitHubAPIResponse response)
+    private boolean UpdateApp(GitHubAPIResponse apiResponse)
     {
         if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED ||
             checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED)
@@ -135,10 +137,24 @@ public class CheckUpdateActivity extends ComponentActivity
         this.updateStatus.append("Downloading update\n");
         
         File updateApk = new File(Environment.getExternalStorageDirectory()
-            .getPath(), "EasyHome/Update/" + response.Assets.get(0).FileName);
+            .getPath(), "EasyHome/Update/" + apiResponse.Assets.get(0).FileName);
         
-        try (DataInputStream is = new DataInputStream(new URL(response.Assets.get(0).DownloadUrl).openStream()))
+        OkHttpClient client = new OkHttpClient();
+        
+        Request request = new Request.Builder()
+            .url(apiResponse.Assets.get(0).DownloadUrl)
+            .get()
+            .build();
+        
+        try (Response response = client.newCall(request).execute())
         {
+            if (!response.isSuccessful())
+            {
+                return false;
+            }
+            
+            InputStream is = response.body().byteStream();
+            
             byte[] buffer = new byte[1024];
             FileOutputStream os = new FileOutputStream(updateApk);
             while (0 < is.read(buffer))

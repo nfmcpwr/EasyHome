@@ -60,10 +60,8 @@ public class GitHubAPIResponse
             .get()
             .build();
         
-        try
+        try (Response response = client.newCall(request).execute())
         {
-            Response response = client.newCall(request).execute();
-            
             if (response.isSuccessful())
             {
                 return new ObjectMapper().readValue(response.body()
