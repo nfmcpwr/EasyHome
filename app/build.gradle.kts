@@ -46,7 +46,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
     implementation("androidx.navigation:navigation-fragment:2.9.8")
     implementation("androidx.navigation:navigation-ui:2.9.8")
-    implementation("tools.jackson.core:jackson-databind:3.2.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.22.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("androidx.compose.ui:ui")
     implementation("androidx.compose.ui:ui-graphics")
