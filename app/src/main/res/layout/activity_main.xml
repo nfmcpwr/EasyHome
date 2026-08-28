@@ -20,9 +20,11 @@
 
         <Button
             android:id="@+id/callButton1"
-            android:layout_width="400dp"
+            android:layout_width="0dp"
             android:layout_height="225dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/home_button1_default_label"
             android:textSize="50sp"
             app:cornerRadius="15dp"
@@ -36,9 +38,11 @@
 
         <Button
             android:id="@+id/callButton2"
-            android:layout_width="400dp"
+            android:layout_width="0dp"
             android:layout_height="225dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="48dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/home_button2_default_label"
             android:textSize="50sp"
             app:cornerRadius="15dp"
@@ -78,7 +82,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textClock" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
