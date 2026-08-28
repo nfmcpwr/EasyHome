@@ -16,12 +16,25 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
+    private int count = 0;
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private final Runnable reset = new Runnable()
+    {
+        @Override
+        public void run()
+        {
+            count = 0;
+        }
+    };
+    
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -86,6 +99,26 @@ public class MainActivity extends AppCompatActivity
         callButton2.setText(ConfigStore.Config.Button2Text);
         callButton2.setTextColor(Color.parseColor(ConfigStore.Config.Button2TextColor));
         callButton2.setOnClickListener(onclick);
+        
+        this.count = 0;
+        Button tapButton = findViewById(R.id.tapButton);
+        tapButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                handler.removeCallbacks(reset);
+                
+                count++;
+                
+                if (10 <= count)
+                {
+                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
+                }
+                
+                handler.postDelayed(reset, 3000);
+            }
+        });
         
         if (dpm.isLockTaskPermitted(getPackageName()))
         {
