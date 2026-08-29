@@ -90,9 +90,11 @@ public class ColorPicker extends ConstraintLayout
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean bu)
             {
-                r = (byte)i;
+                r = (byte) i;
                 colorString = "#" + String.format("%02x%02x%02x", r, g, b).toUpperCase();
                 previewText.setText(colorString);
+                previewText.setBackgroundColor(Color.parseColor(colorString));
+                setPreviewTextColor();
             }
             
             @Override
@@ -114,9 +116,11 @@ public class ColorPicker extends ConstraintLayout
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean bu)
             {
-                g = (byte)i;
+                g = (byte) i;
                 colorString = "#" + String.format("%02x%02x%02x", r, g, b).toUpperCase();
                 previewText.setText(colorString);
+                previewText.setBackgroundColor(Color.parseColor(colorString));
+                setPreviewTextColor();
             }
             
             @Override
@@ -138,9 +142,11 @@ public class ColorPicker extends ConstraintLayout
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean bu)
             {
-                b = (byte)i;
+                b = (byte) i;
                 colorString = "#" + String.format("%02x%02x%02x", r, g, b).toUpperCase();
                 previewText.setText(colorString);
+                previewText.setBackgroundColor(Color.parseColor(colorString));
+                setPreviewTextColor();
             }
             
             @Override
@@ -177,14 +183,28 @@ public class ColorPicker extends ConstraintLayout
     
     public void setColor(byte r, byte g, byte b)
     {
-        setColor(Color.valueOf(Color.argb(0xFF, r, g, b)));
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        
+        this.bar_r.setProgress(r);
+        this.bar_g.setProgress(g);
+        this.bar_b.setProgress(b);
+        
+        this.colorString = String.format("#%02X%02X%02X", r, g, b);
+        
+        this.previewText.setText(this.colorString);
+        this.previewText.setBackgroundColor(Color.parseColor(this.colorString));
+        this.setPreviewTextColor();
     }
     
     public void setColor(Color color)
     {
-        this.bar_r.setProgress((byte)color.red());
-        this.bar_g.setProgress((byte)color.green());
-        this.bar_b.setProgress((byte)color.blue());
+        byte r = (byte) Math.round(color.red() * 255f);
+        byte g = (byte) Math.round(color.green() * 255f);
+        byte b = (byte) Math.round(color.blue() * 255f);
+        
+        setColor(r, g, b);
     }
     
     public void setColor(String colorString)
@@ -195,5 +215,22 @@ public class ColorPicker extends ConstraintLayout
     public void setTitle(String title)
     {
         this.titleText.setText(title);
+    }
+    
+    private void setPreviewTextColor()
+    {
+        double dr = this.r / 255.0;
+        double dg = this.g / 255.0;
+        double db = this.b / 255.0;
+        
+        dr = dr <= 0.03928 ? dr / 12.92 : Math.pow((dr + 0.055) / 1.055, 2.4);
+        dg = dg <= 0.03928 ? dg / 12.92 : Math.pow((dg + 0.055) / 1.055, 2.4);
+        db = db <= 0.03928 ? db / 12.92 : Math.pow((db + 0.055) / 1.055, 2.4);
+        
+        double lu = 0.2126 * dr + 0.7152 * dg + 0.0722 * db;
+        double white = 1.05 / (lu + 0.05);
+        double black = (lu + 0.05) / 0.05;
+        
+        this.previewText.setTextColor(Color.parseColor(black < white ? "#FFFFFF" : "#000000"));
     }
 }
