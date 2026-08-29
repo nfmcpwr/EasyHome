@@ -33,6 +33,8 @@ import okhttp3.Response;
 public class CheckUpdateActivity extends ComponentActivity
 {
     private TextView updateStatus;
+    private boolean skip = false;
+    private boolean completed = false;
     
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
@@ -43,7 +45,6 @@ public class CheckUpdateActivity extends ComponentActivity
         
         this.updateStatus = findViewById(R.id.updateStatus);
         
-        boolean skip = false;
         try
         {
             PackageInfo info = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_META_DATA);
@@ -52,16 +53,32 @@ public class CheckUpdateActivity extends ComponentActivity
         catch (PackageManager.NameNotFoundException e)
         {
             Log.e(CheckUpdateActivity.class.getSimpleName(), e.getMessage(), e);
-            skip = true;
+            this.skip = true;
         }
         
-        if (!skip)
+        Thread t = new Thread(new Runnable()
         {
-            boolean result = CheckUpdate();
-            if (result)
+            @Override
+            public void run()
             {
-                this.updateStatus.append("Update completed\n");
+                if (!skip)
+                {
+                    boolean result = CheckUpdate();
+                    if (result)
+                    {
+                        updateStatus.append("Update completed\n");
+                    }
+                }
+                
+                completed = true;
             }
+        });
+        
+        t.start();
+        
+        while (!completed)
+        {
+        
         }
         
         ProgressBar progressBar = findViewById(R.id.progressBar);
