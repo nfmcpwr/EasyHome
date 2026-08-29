@@ -2,15 +2,11 @@ package net.nfmcpwr.EasyHome;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.Toast;
 
 import androidx.activity.ComponentActivity;
 import androidx.annotation.Nullable;
-
-import java.io.IOException;
 
 public class HomeSettingsActivity extends ComponentActivity
 {
@@ -59,14 +55,6 @@ public class HomeSettingsActivity extends ComponentActivity
     {
         super.onStop();
         
-        try
-        {
-            ConfigStore.Config.Save();
-        }
-        catch (IOException e)
-        {
-            Toast.makeText(this, R.string.error_save_config, Toast.LENGTH_SHORT).show();
-            Log.e(HomeSettingsActivity.class.getSimpleName(), e.getMessage(), e);
-        }
+        Config.Save(this, ConfigStore.Config);
     }
 }

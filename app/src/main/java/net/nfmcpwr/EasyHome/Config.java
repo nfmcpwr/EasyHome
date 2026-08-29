@@ -106,12 +106,21 @@ public class Config
         }
     }
     
-    public void Save() throws IOException
+    public static void Save(Context context, Config config)
     {
         File configFile = new File(Environment.getExternalStorageDirectory()
             .getPath(), "EasyHome/Config/CallButtonConfig");
-        String configJson = new ObjectMapper().writeValueAsString(this);
         
-        new FileWriter(configFile).write(configJson);
+        try (FileWriter writer = new FileWriter(configFile))
+        {
+            String configJson = new ObjectMapper().writeValueAsString(config);
+            
+            writer.write(configJson);
+        }
+        catch (IOException e)
+        {
+            Toast.makeText(context, R.string.error_read_config, Toast.LENGTH_SHORT).show();
+            Log.e(Config.class.getSimpleName(), e.getMessage(), e);
+        }
     }
 }
