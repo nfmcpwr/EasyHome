@@ -2,6 +2,7 @@ package net.nfmcpwr.EasyHome;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.ImageButton;
 
 import androidx.activity.ComponentActivity;
 import androidx.annotation.Nullable;
@@ -16,6 +17,12 @@ public class SettingsActivity extends ComponentActivity
         super.onCreate(savedInstanceState);
         
         setContentView(R.layout.activity_settings);
+        
+        ImageButton prevButton = findViewById(R.id.prev_button);
+        prevButton.setOnClickListener(view ->
+        {
+            finish();
+        });
         
         MaterialButton homeSettingsButton = findViewById(R.id.home_settings_button);
         homeSettingsButton.setOnClickListener(view ->
