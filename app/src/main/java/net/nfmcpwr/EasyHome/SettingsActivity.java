@@ -1,5 +1,8 @@
 package net.nfmcpwr.EasyHome;
 
+import android.app.AlertDialog;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -40,6 +43,25 @@ public class SettingsActivity extends ComponentActivity
         checkUpdateButton.setOnClickListener(view ->
         {
             startActivity(new Intent(this, CheckUpdateActivity.class));
+        });
+        
+        MaterialButton restartButton = findViewById(R.id.restart_button);
+        restartButton.setOnClickListener(view ->
+        {
+            new AlertDialog.Builder(this)
+                .setTitle("Restart?")
+                .setNegativeButton("Cancel", (dialogInterface, i) ->
+                {
+                    
+                })
+                .setPositiveButton("OK", (dialogInterface, i) ->
+                {
+                    DevicePolicyManager dpm = getSystemService(DevicePolicyManager.class);
+                    ComponentName cpn = new ComponentName(this, DeviceOwnerReceiver.class);
+                    
+                    dpm.reboot(cpn);
+                })
+                .show();
         });
     }
 }

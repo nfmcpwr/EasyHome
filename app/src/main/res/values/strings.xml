@@ -9,6 +9,7 @@
     <string name="settings_home_settings_label">Home Settings</string>
     <string name="settings_launcher_label">Launcher</string>
     <string name="settings_check_update_label">Check Update</string>
+    <string name="settings_restart_label">Restart</string>
     <string name="settings_home_button1_text_label">Button1Text</string>
     <string name="settings_home_button1_tel_number_label">Button1TelNumber</string>
     <string name="settings_home_button1_color_label">Button1Color</string>
