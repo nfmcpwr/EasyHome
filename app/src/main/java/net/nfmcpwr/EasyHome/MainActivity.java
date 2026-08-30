@@ -1,8 +1,6 @@
 package net.nfmcpwr.EasyHome;
 
-import static android.app.admin.DevicePolicyManager.LOCK_TASK_FEATURE_HOME;
-import static android.app.admin.DevicePolicyManager.LOCK_TASK_FEATURE_OVERVIEW;
-import static android.app.admin.DevicePolicyManager.LOCK_TASK_FEATURE_SYSTEM_INFO;
+import static android.app.admin.DevicePolicyManager.LOCK_TASK_FEATURE_NONE;
 
 import android.Manifest;
 import android.app.ActivityManager;
@@ -47,7 +45,7 @@ public class MainActivity extends AppCompatActivity
             getPackageName()
         });
         
-        dpm.setLockTaskFeatures(cpn, LOCK_TASK_FEATURE_HOME | LOCK_TASK_FEATURE_OVERVIEW | LOCK_TASK_FEATURE_SYSTEM_INFO);
+        dpm.setLockTaskFeatures(cpn, LOCK_TASK_FEATURE_NONE);
         
         try
         {
