@@ -15,7 +15,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:gravity="center_vertical"
-            android:text="Title"
+            android:text="@string/empty_text"
             android:textAlignment="gravity"
             android:textColor="@color/foreground_text"
             android:textSize="20sp"

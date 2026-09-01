@@ -119,7 +119,7 @@ public class Config
         }
         catch (IOException e)
         {
-            Toast.makeText(context, R.string.error_read_config, Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, R.string.error_save_config, Toast.LENGTH_SHORT).show();
             Log.e(Config.class.getSimpleName(), e.getMessage(), e);
         }
     }

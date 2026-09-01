@@ -62,7 +62,7 @@ public class ColorPicker extends ConstraintLayout
         }
         
         this.previewText = findViewById(R.id.cp_preview);
-        this.previewText.setText("#000000");
+        this.previewText.setText(R.string.color_picker_default_color);
         
         this.expandButton = findViewById(R.id.cp_expandButton);
         this.barExpand = findViewById(R.id.cp_barExpand);
