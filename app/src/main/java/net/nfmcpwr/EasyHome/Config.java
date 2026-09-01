@@ -81,7 +81,8 @@ public class Config
                     outStream.write(buffer, 0, len);
                 }
                 
-                String defaultConfigText = outStream.toString("UTF-8");
+                String utf8 = "UTF-8";
+                String defaultConfigText = outStream.toString(utf8);
                 
                 writer.write(defaultConfigText);
             }

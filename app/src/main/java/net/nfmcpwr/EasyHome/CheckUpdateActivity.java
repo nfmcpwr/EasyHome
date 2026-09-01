@@ -56,22 +56,18 @@ public class CheckUpdateActivity extends ComponentActivity
             this.skip = true;
         }
         
-        Thread t = new Thread(new Runnable()
+        Thread t = new Thread(() ->
         {
-            @Override
-            public void run()
+            if (!skip)
             {
-                if (!skip)
+                boolean result = CheckUpdate();
+                if (result)
                 {
-                    boolean result = CheckUpdate();
-                    if (result)
-                    {
-                        updateStatus.append("Update completed\n");
-                    }
+                    updateStatus.append("Update completed\n");
                 }
-                
-                completed = true;
             }
+            
+            completed = true;
         });
         
         t.start();
