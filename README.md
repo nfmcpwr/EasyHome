@@ -26,4 +26,4 @@ adb shell dpm set-device-owner net.nfmcpwr.EasyHome/.DeviceOwnerReceiver
 ## License
 
 This project is licenced under the [
-`MIT License`](https://github.com/nfmcpwr/EasyHome/blob/master/LICENSE)
+`GNU General Public License v3.0`](https://github.com/nfmcpwr/EasyHome/blob/master/LICENSE)
