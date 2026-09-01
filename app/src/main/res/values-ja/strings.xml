@@ -1,0 +1,10 @@
+<resources>
+    <string name="home_clock_format">MM 月 dd 日 (EEE)</string>
+    <string name="settings_home_settings_label">ホーム設定</string>
+    <string name="settings_launcher_label">ランチャー</string>
+    <string name="settings_check_update_label">更新を確認</string>
+    <string name="settings_restart_label">再起動</string>
+    <string name="error_save_config">設定ファイルの保存に失敗しました</string>
+    <string name="error_save_default_config">デフォルト設定ファイルの保存に失敗しました</string>
+    <string name="error_read_config">設定ファイルの読み込みに失敗しました</string>
+</resources>
