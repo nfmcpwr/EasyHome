@@ -8,7 +8,6 @@
     android:fitsSystemWindows="true"
     android:textAlignment="center"
     android:textDirection="ltr"
-    android:background="@color/background"
     tools:context=".MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -73,8 +72,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:format12Hour="MM 月 dd 日 (EEE)"
-            android:format24Hour="MM 月 dd 日 (EEE)"
+            android:format12Hour="@string/home_clock_format"
+            android:format24Hour="@string/home_clock_format"
             android:textAlignment="center"
             android:textDirection="ltr"
             android:textSize="60sp"
@@ -93,6 +92,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/callButton2" />
+
+        <TextView
+            android:id="@+id/batteryText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="@string/home_battery_default_text"
+            android:textSize="20sp"
+            app:drawableLeftCompat="@drawable/battery_android_question_24px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
