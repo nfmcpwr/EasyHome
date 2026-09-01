@@ -21,6 +21,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Handler;
 import android.os.Looper;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -35,14 +37,7 @@ public class MainActivity extends AppCompatActivity
 {
     private int count = 0;
     private final Handler handler = new Handler(Looper.getMainLooper());
-    private final Runnable reset = new Runnable()
-    {
-        @Override
-        public void run()
-        {
-            count = 0;
-        }
-    };
+    private final Runnable reset = () -> count = 0;
     
     private final BroadcastReceiver batteryReceiver = new BroadcastReceiver()
     {
@@ -60,6 +55,19 @@ public class MainActivity extends AppCompatActivity
                     batteryText.setText(String.format(Locale.getDefault(), "%d%%", batLevel * 100 / scale));
                     batteryText.setCompoundDrawablesWithIntrinsicBounds(BatteryIcon.GetBatteryIcon(batLevel * 100 / scale), 0, 0, 0);
                 }
+            }
+        }
+    };
+    
+    private final BroadcastReceiver phoneStateReceiver = new BroadcastReceiver()
+    {
+        @Override
+        public void onReceive(Context context, Intent intent)
+        {
+            if (Objects.equals(intent.getAction(), TelephonyManager.ACTION_PHONE_STATE_CHANGED) &&
+                Objects.equals(intent.getStringExtra(TelephonyManager.EXTRA_STATE), TelephonyManager.EXTRA_STATE_RINGING))
+            {
+                stopLockTask();
             }
         }
     };
@@ -136,22 +144,18 @@ public class MainActivity extends AppCompatActivity
         
         this.count = 0;
         Button tapButton = findViewById(R.id.tapButton);
-        tapButton.setOnClickListener(new View.OnClickListener()
+        tapButton.setOnClickListener(view ->
         {
-            @Override
-            public void onClick(View view)
+            handler.removeCallbacks(reset);
+            
+            count++;
+            
+            if (10 <= count)
             {
-                handler.removeCallbacks(reset);
-                
-                count++;
-                
-                if (10 <= count)
-                {
-                    startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
-                }
-                
-                handler.postDelayed(reset, 3000);
+                startActivity(new Intent(getApplicationContext(), SettingsActivity.class));
             }
+            
+            handler.postDelayed(reset, 3000);
         });
         
         if (dpm.isLockTaskPermitted(getPackageName()))
@@ -184,6 +188,7 @@ public class MainActivity extends AppCompatActivity
         super.onStart();
         
         registerReceiver(this.batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+        registerReceiver(this.phoneStateReceiver, new IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED));
     }
     
     @Override
@@ -192,5 +197,6 @@ public class MainActivity extends AppCompatActivity
         super.onStop();
         
         unregisterReceiver(this.batteryReceiver);
+        unregisterReceiver(this.phoneStateReceiver);
     }
 }
