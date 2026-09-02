@@ -22,7 +22,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Handler;
 import android.os.Looper;
 import android.telephony.TelephonyManager;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -165,6 +164,24 @@ public class MainActivity extends AppCompatActivity
     }
     
     @Override
+    protected void onResume()
+    {
+        super.onResume();
+        
+        if (getSystemService(ActivityManager.class).getLockTaskModeState() == ActivityManager.LOCK_TASK_MODE_NONE)
+        {
+            try
+            {
+                startLockTask();
+            }
+            catch (IllegalArgumentException e)
+            {
+                Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    
+    @Override
     public void onWindowFocusChanged(boolean hasFocus)
     {
         super.onWindowFocusChanged(hasFocus);
@@ -187,8 +204,20 @@ public class MainActivity extends AppCompatActivity
     {
         super.onStart();
         
-        registerReceiver(this.batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
-        registerReceiver(this.phoneStateReceiver, new IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED));
+        requestPermissions(new String[]{
+            Manifest.permission.READ_PHONE_STATE
+        }, 1919810);
+        
+        if (Build.VERSION_CODES.TIRAMISU <= Build.VERSION.SDK_INT)
+        {
+            registerReceiver(this.batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED), Context.RECEIVER_EXPORTED);
+            registerReceiver(this.phoneStateReceiver, new IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED), Context.RECEIVER_EXPORTED);
+        }
+        else
+        {
+            registerReceiver(this.batteryReceiver, new IntentFilter(Intent.ACTION_BATTERY_CHANGED));
+            registerReceiver(this.phoneStateReceiver, new IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED));
+        }
     }
     
     @Override
