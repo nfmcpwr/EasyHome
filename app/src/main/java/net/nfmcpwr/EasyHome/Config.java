@@ -64,12 +64,12 @@ public class Config
         }
         
         File configFile = new File(Environment.getExternalStorageDirectory()
-            .getPath(), "EasyHome/Config/CallButtonConfig");
+            .getPath(), "EasyHome/Config/Config.json");
         
         if (!configFile.exists())
         {
             try (InputStream iStream = context.getResources()
-                .openRawResource(R.raw.callbuttonconfig);
+                .openRawResource(R.raw.config);
                  ByteArrayOutputStream outStream = new ByteArrayOutputStream();
                  FileWriter writer = new FileWriter(configFile))
             {
@@ -110,7 +110,7 @@ public class Config
     public static void Save(Context context, Config config)
     {
         File configFile = new File(Environment.getExternalStorageDirectory()
-            .getPath(), "EasyHome/Config/CallButtonConfig");
+            .getPath(), "EasyHome/Config/Config.json");
         
         try (FileWriter writer = new FileWriter(configFile))
         {
