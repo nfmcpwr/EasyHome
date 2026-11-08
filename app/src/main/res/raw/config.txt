@@ -8,5 +8,6 @@
     "Button2BackgroundColor":"#AC99EA",
     "Button2TextColor":"#000000",
     "Button2TelNumber":"",
-    "Button2ImageUri":""
+    "Button2ImageUri":"",
+    "Debug":false
 }

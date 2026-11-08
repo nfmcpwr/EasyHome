@@ -31,6 +31,7 @@ public class Config
     public String Button2Color;
     public String Button2TextColor;
     public String Button2TelNumber;
+    public boolean Debug;
     
     public Config()
     {
