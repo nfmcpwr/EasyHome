@@ -11,6 +11,7 @@
     <string name="settings_launcher_label">Launcher</string>
     <string name="settings_check_update_label">Check Update</string>
     <string name="settings_restart_label">Restart</string>
+    <string name="settings_debug_clear_device_owner_label" translatable="false">Clear device owner</string>
     <string name="settings_home_button1_text_label" translatable="false">Button1Text</string>
     <string name="settings_home_button1_tel_number_label" translatable="false">Button1TelNumber</string>
     <string name="settings_home_button1_color_label" translatable="false">Button1Color</string>

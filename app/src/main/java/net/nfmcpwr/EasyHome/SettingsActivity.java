@@ -63,5 +63,17 @@ public class SettingsActivity extends ComponentActivity
                 })
                 .show();
         });
+        
+        MaterialButton clearDeviceOwnerButton = findViewById(R.id.debug_clear_device_owner_button);
+        clearDeviceOwnerButton.setOnClickListener(view ->
+        {
+            getSystemService(DevicePolicyManager.class)
+                .clearDeviceOwnerApp(this.getPackageName());
+        });
+        
+        if (!ConfigStore.Config.Debug)
+        {
+            clearDeviceOwnerButton.setHeight(0);
+        }
     }
 }

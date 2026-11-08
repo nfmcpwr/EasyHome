@@ -79,4 +79,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/check_update_button" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/debug_clear_device_owner_button"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@android:color/transparent"
+        android:backgroundTint="@android:color/transparent"
+        android:text="@string/settings_debug_clear_device_owner_label"
+        android:textAlignment="viewStart"
+        android:textColor="@color/foreground_text"
+        app:cornerRadius="5dp"
+        app:icon="@drawable/debug"
+        app:iconTint="@color/foreground_ui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/restart_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
