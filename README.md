@@ -14,6 +14,7 @@
 - Set `EasyHome` as the device owner
 - `Files and media` and `Phone` permissions
 - `All files access` permission (Android 11+)
+- `Install unknown apps` permission (for update)
 
 ### Set device owner
 
@@ -25,5 +26,4 @@ adb shell dpm set-device-owner net.nfmcpwr.EasyHome/.DeviceOwnerReceiver
 
 ## License
 
-This project is licenced under the [
-`GNU General Public License v3.0`](https://github.com/nfmcpwr/EasyHome/blob/master/LICENSE)
+This project is licenced under the [`GNU General Public License v3.0`](https://github.com/nfmcpwr/EasyHome/blob/master/LICENSE)
