@@ -34,7 +34,6 @@ public class CheckUpdateActivity extends ComponentActivity
 {
     private TextView updateStatus;
     private boolean skip = false;
-    private boolean completed = false;
     
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState)
@@ -67,22 +66,15 @@ public class CheckUpdateActivity extends ComponentActivity
                 }
             }
             
-            completed = true;
+            ProgressBar progressBar = findViewById(R.id.progressBar);
+            progressBar.setVisibility(View.INVISIBLE);
+            
+            ImageButton prevButton = findViewById(R.id.prev_button);
+            prevButton.setVisibility(View.VISIBLE);
+            prevButton.setOnClickListener(view -> finish());
         });
         
         t.start();
-        
-        while (!completed)
-        {
-        
-        }
-        
-        ProgressBar progressBar = findViewById(R.id.progressBar);
-        progressBar.setVisibility(View.INVISIBLE);
-        
-        ImageButton prevButton = findViewById(R.id.prev_button);
-        prevButton.setVisibility(View.VISIBLE);
-        prevButton.setOnClickListener(view -> finish());
     }
     
     private boolean CheckUpdate()
@@ -168,10 +160,11 @@ public class CheckUpdateActivity extends ComponentActivity
             InputStream is = response.body().byteStream();
             
             byte[] buffer = new byte[1024];
+            int count = -1;
             FileOutputStream os = new FileOutputStream(updateApk);
-            while (0 < is.read(buffer))
+            while ((count = is.read(buffer, 0, 1024)) != -1)
             {
-                os.write(buffer);
+                os.write(buffer, 0, count);
             }
             
             os.close();
