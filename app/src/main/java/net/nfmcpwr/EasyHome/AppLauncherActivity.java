@@ -19,9 +19,10 @@ public class AppLauncherActivity extends ComponentActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_launcher);
-
+        
         List<PackageInfo> l = getPackageManager().getInstalledPackages(PackageManager.GET_META_DATA);
         l.removeIf(info -> getPackageManager().getLaunchIntentForPackage(info.packageName) == null);
+        l.removeIf(info -> info.packageName.equals(this.getPackageName()));
         
         RecyclerView launcherItemsView = findViewById(R.id.launcherItems);
         launcherItemsView.setAdapter(new AppLauncherViewAdapter(this, l));
